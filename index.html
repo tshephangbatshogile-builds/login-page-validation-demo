@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>First Login Page</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;display:flex;align-items:center;justify-content:center;min-height:100vh}.card{background:#fff;padding:32px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.08);width:100%;max-width:380px}.title{text-align:center;margin:0 0 20px}.field{margin-bottom:14px}.label{display:block;margin-bottom:6px;font-size:14px;color:#333}.input{width:100%;padding:12px;border:1px solid #ccc;border-radius:10px;font-size:14px}.input:focus{outline:none;border-color:#2563eb}.error{color:#b91c1c;font-size:12px;min-height:16px;margin-top:4px}.btn{width:100%;padding:12px;border:none;border-radius:10px;background:#2563eb;color:#fff;font-size:15px;cursor:pointer}.btn:hover{opacity:.95}.success{margin-top:12px;color:#166534;text-align:center;font-size:14px}.footer{text-align:center;margin-top:14px;font-size:12px;color:#666}
+</style>
+</head>
+<body>
+<div class="card">
+<h2 class="title">Sign In</h2>
+<div class="field">
+<label class="label" for="username">Username</label>
+<input class="input" id="username" type="text" placeholder="Enter username" />
+<div class="error" id="userError"></div>
+</div>
+<div class="field">
+<label class="label" for="password">Password</label>
+<input class="input" id="password" type="password" placeholder="Enter password" />
+<div class="error" id="passError"></div>
+</div>
+<button class="btn" onclick="login()">Login</button>
+<div class="success" id="successMsg"></div>
+<div class="footer">Demo credentials: admin / Password123</div>
+</div>
+<script>
+function clearMessages(){document.getElementById('userError').textContent='';document.getElementById('passError').textContent='';document.getElementById('successMsg').textContent='';}
+function login(){clearMessages();const username=document.getElementById('username').value.trim();const password=document.getElementById('password').value.trim();let valid=true;if(!username){document.getElementById('userError').textContent='Username is required';valid=false;}if(!password){document.getElementById('passError').textContent='Password is required';valid=false;}if(!valid)return;if(username==='admin'&&password==='Password123'){document.getElementById('successMsg').textContent='Login successful! Redirecting...';setTimeout(()=>{document.getElementById('successMsg').textContent='Welcome to dashboard (demo).';},1000);}else{document.getElementById('passError').textContent='Invalid username or password';}}
+</script>
+</body>
+</html>
